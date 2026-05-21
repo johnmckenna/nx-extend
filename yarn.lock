@@ -5348,10 +5348,9 @@ __metadata:
 "@nx-extend/react-email@workspace:packages/react-email":
   version: 0.0.0-use.local
   resolution: "@nx-extend/react-email@workspace:packages/react-email"
-  dependencies:
-    react-email: "npm:^6.1.1"
   peerDependencies:
     "@nx/devkit": ^22.0.0
+    react-email: ^6.1.1
   languageName: unknown
   linkType: soft
 
@@ -18249,6 +18248,7 @@ __metadata:
     jest-util: "npm:30.4.1"
     nx: "npm:22.5.2"
     prettier: "npm:3.8.3"
+    react-email: "npm:^6.1.1"
     shelljs: "npm:^0.10.0"
     tar: "npm:^7.5.15"
     ts-jest: "npm:29.4.9"
