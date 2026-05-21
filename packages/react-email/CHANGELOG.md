@@ -1,4 +1,13 @@
  
+## [7.0.2](https://github.com/tripss/nx-extend/compare/react-email@7.0.1...react-email@7.0.2) (2026-05-21)
+
+
+### Bug Fixes
+
+* **react-email:** Update `react-email` dependency to peerDependencies and sync lockfile ([e395089](https://github.com/tripss/nx-extend/commit/e3950893f55a31ee4754b4d3f19ae224f174da44))
+
+
+
 ## [7.0.1](https://github.com/tripss/nx-extend/compare/react-email@7.0.0...react-email@7.0.1) (2026-05-08)
 
 
