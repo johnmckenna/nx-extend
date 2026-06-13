@@ -1,4 +1,4 @@
-import { ExecutorContext } from '@nx/devkit'
+import { ExecutorContext, getDependencyVersionFromPackageJson } from '@nx/devkit'
 import { buildCommand, execPackageManagerCommand } from '@nx-extend/core'
 
 import 'dotenv/config'
@@ -13,8 +13,10 @@ export async function serveExecutor(
 ): Promise<{ success: boolean }> {
   const { sourceRoot, root } = context.projectsConfigurations.projects[context.projectName]
 
+  const reactEmailVersion = getDependencyVersionFromPackageJson('react-email')
+
   return execPackageManagerCommand(buildCommand([
-    'react-email dev',
+    `react-email${reactEmailVersion ? `@${reactEmailVersion}` : ''} dev`,
     `--dir=${sourceRoot || root}`,
     options.port && `--port=${options.port}`
   ]), {
