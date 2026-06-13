@@ -1,4 +1,13 @@
  
+## [7.0.3](https://github.com/tripss/nx-extend/compare/react-email@7.0.2...react-email@7.0.3) (2026-06-13)
+
+
+### Bug Fixes
+
+* **react-email:** Dynamically append `react-email` version in serve executor ([71d25b7](https://github.com/tripss/nx-extend/commit/71d25b7c05ffc1a576976aa1475dec5355b9bd0d))
+
+
+
 ## [7.0.2](https://github.com/tripss/nx-extend/compare/react-email@7.0.1...react-email@7.0.2) (2026-05-21)
 
 
