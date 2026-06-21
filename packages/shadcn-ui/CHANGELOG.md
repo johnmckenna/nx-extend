@@ -1,4 +1,6 @@
  
+## [6.2.4](https://github.com/tripss/nx-extend/compare/shadcn-ui@6.2.3...shadcn-ui@6.2.4) (2026-06-21)
+
 ## [6.2.3](https://github.com/tripss/nx-extend/compare/shadcn-ui@6.2.2...shadcn-ui@6.2.3) (2026-05-08)
 
 
