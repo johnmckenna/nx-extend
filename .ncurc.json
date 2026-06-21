@@ -2,6 +2,7 @@
   "upgrade": true,
   "interactive": true,
   "root": true,
+  "cooldown": 3,
   "workspaces": true,
   "packageManager": "yarn",
   "format": [
