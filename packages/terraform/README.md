@@ -117,19 +117,20 @@ nx run <terraform-project-name>:fmt
 
 | Name                  | Type      | Default  | Description                                                                                    | Supported Commands                 |
 |:----------------------|:----------|:---------|:-----------------------------------------------------------------------------------------------|:-----------------------------------|
-| **`ciMode`**          | `boolean` | `false`  | Enables CI mode (sets `TF_IN_AUTOMATION=true` and `TF_INPUT=0`)                               | All                                |
+| **`ciMode`**          | `boolean` | `false`  | Enables CI mode (sets `TF_IN_AUTOMATION=true` and `TF_INPUT=0`)                                | All                                |
 | **`varFile`**         | `string`  | -        | Path to a variable file (passed as `--var-file`)                                               | `plan`, `apply`, `test`            |
 | **`varString`**       | `string`  | -        | Inline variables (passed as `--var`)                                                           | `plan`, `apply`, `test`            |
 | **`planFile`**        | `string`  | -        | Path to output the plan file (e.g., `tfplan`)                                                  | `plan`, `apply`                    |
 | **`autoApproval`**    | `boolean` | `false`  | Skips interactive approval (passed as `-auto-approve`)                                         | `apply`, `destroy`                 |
-| **`workspace`**       | `string`  | -        | Name of the workspace. **Required** for `new`, `select`, and `delete` actions                 | `workspace`                        |
-| **`workspaceAction`** | `string`  | `select` | Action to perform on the workspace. Accepted values: `select`, `new`, `delete`, `list`        | `workspace`                        |
-| **`backendConfig`**   | `array`   | `[]`     | Backend configuration (e.g., `[{ "key": "bucket", "name": "my-bucket" }]`)                    | `init`                             |
+| **`workspace`**       | `string`  | -        | Name of the workspace. **Required** for `new`, `select`, and `delete` actions                  | `workspace`                        |
+| **`workspaceAction`** | `string`  | `select` | Action to perform on the workspace. Accepted values: `select`, `new`, `delete`, `list`         | `workspace`                        |
+| **`backendConfig`**   | `array`   | `[]`     | Backend configuration (e.g., `[{ "key": "bucket", "name": "my-bucket" }]`)                     | `init`                             |
 | **`reconfigure`**     | `boolean` | `false`  | Reconfigure the backend (passed as `-reconfigure`)                                             | `init`                             |
 | **`migrateState`**    | `boolean` | `false`  | Migrate state during init (passed as `-migrate-state`)                                         | `init`                             |
 | **`upgrade`**         | `boolean` | `false`  | Install the latest module and provider versions (passed as `-upgrade`)                         | `init`                             |
 | **`formatWrite`**     | `boolean` | `false`  | If `true`, updates files in place. If `false`, only checks formatting                          | `fmt`                              |
 | **`lock`**            | `boolean` | `false`  | Update the lock file (passed as `lock`)                                                        | `providers`                        |
+| **`root`**            | `string`  | -        | Path to the Terraform working directory                                                        | `all`                              |
 
 ## Usage Examples
 
