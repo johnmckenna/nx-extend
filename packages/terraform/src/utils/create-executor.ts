@@ -37,8 +37,11 @@ export function createExecutor(command: string) {
     }
 
     const projectConfig = context.projectsConfigurations?.projects?.[projectName]
-    const projectTerraformRoot = projectConfig && 'terraformRoot' in projectConfig 
-      ? (projectConfig as Record<string, any>).terraformRoot 
+    const terraformRootValue = projectConfig && 'terraformRoot' in projectConfig
+      ? (projectConfig as Record<string, unknown>).terraformRoot
+      : undefined
+    const projectTerraformRoot = typeof terraformRootValue === 'string'
+      ? terraformRootValue
       : undefined
     const defaultSourceRoot = projectConfig?.sourceRoot
 
