@@ -130,7 +130,7 @@ nx run <terraform-project-name>:fmt
 | **`upgrade`**         | `boolean` | `false`  | Install the latest module and provider versions (passed as `-upgrade`)                         | `init`                             |
 | **`formatWrite`**     | `boolean` | `false`  | If `true`, updates files in place. If `false`, only checks formatting                          | `fmt`                              |
 | **`lock`**            | `boolean` | `false`  | Update the lock file (passed as `lock`)                                                        | `providers`                        |
-| **`root`**            | `string`  | -        | Path to the Terraform working directory                                                        | `all`                              |
+| **`root`**            | `string`  | -        | Working dir: executor `root`, then project.json `terraformRoot`, then `sourceRoot`             | `all`                              |
 
 ## Usage Examples
 
