@@ -5,5 +5,10 @@
   "type": "object",
   "title": "Validate executor",
   "description": "Validate",
-  "properties": {}
+  "properties": {
+    "root": {
+      "type": "string",
+      "description": "Ad-hoc task override path to the Terraform working directory. Overrides project-level terraformRoot."
+    }
+  }
 }

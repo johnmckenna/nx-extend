@@ -17,6 +17,10 @@
     "ciMode": {
       "type": "boolean",
       "default": true
+    },
+    "root": {
+      "type": "string",
+      "description": "Ad-hoc task override path to the Terraform working directory. Overrides project-level terraformRoot."
     }
   }
 }

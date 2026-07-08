@@ -4,6 +4,7 @@ import { execSync } from 'child_process'
 import { which } from 'shelljs'
 
 export interface ExecutorOptions {
+  root?: string // Local target options override
   backendConfig: { key: string; name: string }[]
   autoApproval: boolean
   planFile: string
@@ -30,7 +31,24 @@ export function createExecutor(command: string) {
       throw new Error('Terraform is not installed!')
     }
 
-    const { sourceRoot } = context.projectsConfigurations.projects[context.projectName]
+    const projectName = context.projectName
+    if (!projectName) {
+      throw new Error('Project name is required in executor context')
+    }
+
+    const projectConfig = context.projectsConfigurations?.projects?.[projectName]
+    const terraformRootValue = projectConfig && 'terraformRoot' in projectConfig
+      ? (projectConfig as Record<string, unknown>).terraformRoot
+      : undefined
+    const projectTerraformRoot = typeof terraformRootValue === 'string'
+      ? terraformRootValue
+      : undefined
+    const defaultSourceRoot = projectConfig?.sourceRoot
+
+    const targetDirectory = options.root ??
+                projectTerraformRoot ??
+                defaultSourceRoot
+
     const {
       backendConfig = [],
       planFile,
@@ -98,7 +116,7 @@ export function createExecutor(command: string) {
         command === 'test' && varString && `--var ${varString}`
       ]),
       {
-        cwd: sourceRoot,
+        cwd: targetDirectory,
         stdio: 'inherit',
         env: {
           ...process.env,
