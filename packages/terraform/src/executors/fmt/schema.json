@@ -11,6 +11,10 @@
       "title": "Write to file",
       "description": "Write to file",
       "default": false
+    },
+    "root": {
+      "type": "string",
+      "description": "Ad-hoc task override path to the Terraform working directory. Overrides project-level terraformRoot."
     }
   }
 }
