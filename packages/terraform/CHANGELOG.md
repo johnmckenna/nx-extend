@@ -1,4 +1,16 @@
  
+## [10.3.0](https://github.com/tripss/nx-extend/compare/terraform@10.2.1...terraform@10.3.0) (2026-07-08)
+
+
+### Features
+
+* **terraform:** add option to specify working directory ([870ace3](https://github.com/tripss/nx-extend/commit/870ace31a883a23586ae1f83f1709a0a6fe9aee5))
+
+
+### Bug Fixes
+
+* **terraform:** add narrowing check for terraformRoot ([3df67f6](https://github.com/tripss/nx-extend/commit/3df67f62ce3f6a8b7a7e25c1c7337dcf277d9b09))
+
 ## [10.2.1](https://github.com/tripss/nx-extend/compare/terraform@10.2.0...terraform@10.2.1) (2026-03-27)
 
 
