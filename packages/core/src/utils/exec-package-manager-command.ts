@@ -1,7 +1,7 @@
 import {
   detectPackageManager,
   getPackageManagerCommand as nxGetPackageManagerCommand
-} from 'nx/src/utils/package-manager'
+} from '@nx/devkit'
 
 import { buildCommand } from './build-command'
 import { execCommand, Options } from './exec'

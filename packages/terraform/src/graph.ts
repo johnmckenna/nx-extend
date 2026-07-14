@@ -1,5 +1,6 @@
 import {
   CreateDependencies,
+  DependencyType,
   logger,
   RawProjectGraphDependency,
   workspaceRoot
@@ -7,7 +8,6 @@ import {
 import * as hcl2JsonParser from 'hcl2-json-parser'
 import * as fs from 'node:fs/promises'
 import * as path from 'node:path'
-import { DependencyType } from 'nx/src/config/project-graph'
 
 const isLocalPath = (path: string) => {
   return path.startsWith('./') || path.startsWith('../')
