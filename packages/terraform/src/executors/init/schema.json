@@ -18,6 +18,12 @@
       "description": "Reconfigure a backend, and attempt to migrate any existing state.",
       "default": false
     },
+    "lock": {
+      "type": "boolean",
+      "title": "Lock state during init",
+      "description": "Don't hold a state lock during backend migration. This is dangerous if others might concurrently run commands against the same workspace.",
+      "default": true
+    },
     "root": {
       "type": "string",
       "description": "Ad-hoc task override path to the Terraform working directory. Overrides project-level terraformRoot."

@@ -129,8 +129,10 @@ nx run <terraform-project-name>:fmt
 | **`migrateState`**    | `boolean` | `false`  | Migrate state during init (passed as `-migrate-state`)                                         | `init`                             |
 | **`upgrade`**         | `boolean` | `false`  | Install the latest module and provider versions (passed as `-upgrade`)                         | `init`                             |
 | **`formatWrite`**     | `boolean` | `false`  | If `true`, updates files in place. If `false`, only checks formatting                          | `fmt`                              |
-| **`lock`**            | `boolean` | `false`  | Update the lock file (passed as `lock`)                                                        | `providers`                        |
+| **`lock`**            | `boolean` | `true`   | `init`/`plan`: skip state file locking. Warning: dangerous `providers`: Update the lock file   | `init`, `plan`, `providers`        |
 | **`root`**            | `string`  | -        | Working dir: executor `root`, then project.json `terraformRoot`, then `sourceRoot`             | `all`                              |
+
+> **Note on `lock` option:** For `init` and `plan` commands, setting `lock=false` skips acquiring a lock on the state file, allowing operations on read-only state storage. However, disabling locks can lead to state corruption if concurrent state-changing operations are performed on the same state. Only disable locking when you have read-only access and are certain no other processes are modifying the state.
 
 ## Usage Examples
 
