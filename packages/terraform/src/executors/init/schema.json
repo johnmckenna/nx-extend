@@ -24,6 +24,12 @@
       "description": "Don't hold a state lock during backend migration. This is dangerous if others might concurrently run commands against the same workspace.",
       "default": true
     },
+    "cacheDir": {
+      "type": "string",
+      "title": "Terraform plugin cache directory",
+      "description": "Optional: Directory where terraform will cache downloaded providers. If not specified, terraform uses default behavior (no shared cache).",
+      "examples": [".terraform-plugin-cache", "/tmp/terraform-cache"]
+    },
     "root": {
       "type": "string",
       "description": "Ad-hoc task override path to the Terraform working directory. Overrides project-level terraformRoot."
