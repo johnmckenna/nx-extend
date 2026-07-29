@@ -5297,7 +5297,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nx-extend/core@workspace:packages/core"
   peerDependencies:
-    "@nx/devkit": ^22.0.0
+    "@nx/devkit": ^22.0.0 || ^23.0.0
   languageName: unknown
   linkType: soft
 
@@ -5464,7 +5464,7 @@ __metadata:
   dependencies:
     hcl2-json-parser: "npm:^1.0.1"
   peerDependencies:
-    "@nx/devkit": ^22.0.0
+    "@nx/devkit": ^22.0.0 || ^23.0.0
   languageName: unknown
   linkType: soft
 
