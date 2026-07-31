@@ -102,6 +102,7 @@ export function createExecutor(command: string) {
         command === 'plan' && planFile && `-out ${planFile}`,
         command === 'plan' && varFile && `--var-file ${varFile}`,
         command === 'plan' && varString && `--var ${varString}`,
+        command === 'plan' && lock === false && '-lock=false',
         command === 'destroy' && autoApproval && '-auto-approve',
         command === 'apply' && autoApproval && '-auto-approve',
         command === 'apply' && planFile,
@@ -111,6 +112,7 @@ export function createExecutor(command: string) {
         command === 'init' && upgrade && '-upgrade',
         command === 'init' && migrateState && '-migrate-state',
         command === 'init' && reconfigure && '-reconfigure',
+        command === 'init' && lock === false && '-lock=false',
         command === 'providers' && lock && 'lock',
         command === 'test' && varFile && `--var-file ${varFile}`,
         command === 'test' && varString && `--var ${varString}`

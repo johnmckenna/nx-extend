@@ -6,6 +6,12 @@
   "title": "Plan executor",
   "description": "Plan",
   "properties": {
+    "lock": {
+      "type": "boolean",
+      "title": "Lock state during plan",
+      "description": "Don't hold a state lock during the operation. This is dangerous if others might concurrently run commands against the same workspace.",
+      "default": true
+    },
     "root": {
       "type": "string",
       "description": "Ad-hoc task override path to the Terraform working directory. Overrides project-level terraformRoot."
