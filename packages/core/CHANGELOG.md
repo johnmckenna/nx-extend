@@ -1,4 +1,11 @@
  
+## [10.2.0](https://github.com/TriPSs/nx-extend/compare/core@10.1.0...core@10.2.0) (2026-08-03)
+
+
+### Features
+
+* **terraform,core:** support nx 23 ([b2cdf64](https://github.com/TriPSs/nx-extend/commit/b2cdf64cc0bb06c6c60e71c2c7b5bf92ed3b0415))
+
 # [10.1.0](https://github.com/TriPSs/nx-extend/compare/core@10.0.0...core@10.1.0) (2026-02-24)
 
 
