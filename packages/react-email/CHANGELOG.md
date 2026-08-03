@@ -1,4 +1,10 @@
  
+## [7.0.4](https://github.com/tripss/nx-extend/compare/react-email@7.0.3...react-email@7.0.4) (2026-08-03)
+
+### Dependency Updates
+
+* `core` updated to version `10.2.0`
+
 ## [7.0.3](https://github.com/tripss/nx-extend/compare/react-email@7.0.2...react-email@7.0.3) (2026-06-13)
 
 
