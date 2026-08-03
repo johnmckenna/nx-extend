@@ -1,7 +1,8 @@
 import { ExecutorContext } from '@nx/devkit'
-import { buildCommand } from '@nx-extend/core'
-import { execSync } from 'child_process'
+import { execFileSync } from 'child_process'
 import { which } from 'shelljs'
+import * as path from 'path'
+import { mkdirSync } from 'fs'
 
 export interface ExecutorOptions {
   root?: string // Local target options override
@@ -18,6 +19,11 @@ export interface ExecutorOptions {
   reconfigure: boolean
   workspace: string
   workspaceAction: 'select' | 'new' | 'delete' | 'list'
+  cacheDir?: string
+  cacheEnabled?: boolean
+  mirror?: boolean
+  mirrorDir?: string
+  platforms?: string[]
 
   [key: string]: string | unknown
 }
@@ -60,17 +66,32 @@ export function createExecutor(command: string) {
       lock,
       varFile,
       varString,
-      reconfigure,  
-      workspace,  
-      workspaceAction = 'select'
+      reconfigure,
+      workspace,
+      workspaceAction = 'select',
+      cacheDir,
+      cacheEnabled,
+      mirror,
+      mirrorDir,
+      platforms = []
     } = options
 
-    let env = {}
+    const env: Record<string, string | number | boolean> = {}
     if (ciMode) {
-      env = {
-        TF_IN_AUTOMATION: true,
-        TF_INPUT: 0
-      }
+      env.TF_IN_AUTOMATION = true
+      env.TF_INPUT = 0
+    }
+
+    let resolvedCacheDir = ''
+    if (cacheDir) {
+      resolvedCacheDir = path.isAbsolute(cacheDir) ? cacheDir : path.resolve(targetDirectory || '.', cacheDir)
+      mkdirSync(resolvedCacheDir, { recursive: true })
+      env.TF_PLUGIN_CACHE_DIR = resolvedCacheDir
+    }
+
+    let resolvedMirrorDir = mirrorDir
+    if (mirror && !resolvedMirrorDir) {
+      resolvedMirrorDir = path.resolve(targetDirectory || '.', '.terraform', 'providers')
     }
 
     let workspaceArgs: string[] = [];
@@ -91,9 +112,46 @@ export function createExecutor(command: string) {
       jsonBackendConfig = JSON.parse(jsonBackendConfig)
     }
 
-    execSync(
-      buildCommand([
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const processEnv = (globalThis as any).process?.env || {}
+    const execEnv = {
+      ...processEnv,
+      ...env
+    }
+
+    // Handle provider lock and mirror commands
+    if (command === 'providers' && lock && mirror) {
+      execFileSync(
         'terraform',
+        [
+          'providers',
+          'lock',
+          ...(cacheEnabled ? ['-enable-plugin-cache'] : []),
+          ...(platforms.length > 0 ? platforms.map(p => `-platform=${p}`) : [])
+        ],
+        {
+          cwd: targetDirectory,
+          stdio: 'inherit',
+          env: execEnv
+        }
+      )
+
+      execFileSync(
+        'terraform',
+        [
+          'providers',
+          'mirror',
+          ...(platforms.length > 0 ? platforms.map(p => `-platform=${p}`) : []),
+          resolvedMirrorDir!
+        ],
+        {
+          cwd: targetDirectory,
+          stdio: 'inherit',
+          env: execEnv
+        }
+      )
+    } else {
+      const args = [
         command,
         ...workspaceArgs,
         ...(command === 'init' ? jsonBackendConfig.map(
@@ -114,18 +172,25 @@ export function createExecutor(command: string) {
         command === 'init' && reconfigure && '-reconfigure',
         command === 'init' && lock === false && '-lock=false',
         command === 'providers' && lock && 'lock',
+        ...(command === 'providers' && lock && cacheEnabled ? ['-enable-plugin-cache'] : []),
+        ...(command === 'providers' && lock && platforms.length > 0 ? platforms.map(p => `-platform=${p}`) : []),
+        command === 'providers' && mirror && 'mirror',
+        ...(command === 'providers' && mirror && platforms.length > 0 ? platforms.map(p => `-platform=${p}`) : []),
+        command === 'providers' && mirror && resolvedMirrorDir,
         command === 'test' && varFile && `--var-file ${varFile}`,
         command === 'test' && varString && `--var ${varString}`
-      ]),
-      {
-        cwd: targetDirectory,
-        stdio: 'inherit',
-        env: {
-          ...process.env,
-          ...env
+      ].filter((arg): arg is string => typeof arg === 'string' && arg !== '')
+
+      execFileSync(
+        'terraform',
+        args,
+        {
+          cwd: targetDirectory,
+          stdio: 'inherit',
+          env: execEnv
         }
-      }
-    )
+      )
+    }
 
     return Promise.resolve({ success: true })
   }

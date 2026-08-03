@@ -12,6 +12,37 @@
       "description": "Write out dependency locks for the configured providers.",
       "default": false
     },
+    "cacheEnabled": {
+      "type": "boolean",
+      "title": "Enable plugin cache for lock operations.",
+      "description": "Enable the plugin cache when locking providers. This speeds up the locking process but providers won't be loaded from an authoritative source. Requires cacheDir to be configured.",
+      "default": false
+    },
+    "cacheDir": {
+      "type": "string",
+      "title": "Terraform plugin cache directory",
+      "description": "Optional: Directory where terraform will cache downloaded providers. If not specified, terraform uses default behavior (no shared cache).",
+      "examples": [".terraform-plugin-cache", "/tmp/terraform-cache"]
+    },
+    "mirror": {
+      "type": "boolean",
+      "title": "Mirror providers to a local directory",
+      "description": "Mirror providers to a local directory for offline installation. Can be combined with lock: true to lock and mirror providers in sequence.",
+      "default": false
+    },
+    "mirrorDir": {
+      "type": "string",
+      "title": "Mirror output directory",
+      "description": "Directory where mirrored providers will be written (used with mirror: true). If not specified, defaults to .terraform/providers.",
+      "examples": [".terraform/providers", "terraform-mirror"]
+    },
+    "platforms": {
+      "type": "array",
+      "items": { "type": "string" },
+      "title": "Target platforms for provider operations",
+      "description": "Target specific platforms for provider lock and mirror operations (e.g., linux_amd64, darwin_amd64). Used with lock and/or mirror flags.",
+      "examples": [["linux_amd64", "darwin_amd64"]]
+    },
     "root": {
       "type": "string",
       "description": "Ad-hoc task override path to the Terraform working directory. Overrides project-level terraformRoot."

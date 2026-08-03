@@ -130,6 +130,11 @@ nx run <terraform-project-name>:fmt
 | **`upgrade`**         | `boolean` | `false`  | Install the latest module and provider versions (passed as `-upgrade`)                         | `init`                             |
 | **`formatWrite`**     | `boolean` | `false`  | If `true`, updates files in place. If `false`, only checks formatting                          | `fmt`                              |
 | **`lock`**            | `boolean` | `true`   | `init`/`plan`: skip state file locking. Warning: dangerous `providers`: Update the lock file   | `init`, `plan`, `providers`        |
+| **`cacheEnabled`**    | `boolean` | `false`  | Enable plugin cache for lock operations. Speeds up locking but providers aren't authoritative. | `providers`                        |
+| **`cacheDir`**        | `string`  | -        | Directory for caching downloaded providers (sets `TF_PLUGIN_CACHE_DIR`)                        | `init`, `providers`                |
+| **`mirror`**          | `boolean` | `false`  | Mirror providers to a local directory for offline installation                                 | `providers`                        |
+| **`mirrorDir`**       | `string`  | -        | Directory where mirrored providers will be written (used with `mirror: true`)                  | `providers`                        |
+| **`platforms`**       | `array`   | -        | Target platforms for lock and mirror operations (e.g., `["linux_amd64", "darwin_arm64"]`)      | `providers`                        |
 | **`root`**            | `string`  | -        | Working dir: executor `root`, then project.json `terraformRoot`, then `sourceRoot`             | `all`                              |
 
 > **Note on `lock` option:** For `init` and `plan` commands, setting `lock=false` skips acquiring a lock on the state file, allowing operations on read-only state storage. However, disabling locks can lead to state corruption if concurrent state-changing operations are performed on the same state. Only disable locking when you have read-only access and are certain no other processes are modifying the state.
