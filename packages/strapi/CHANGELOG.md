@@ -1,4 +1,10 @@
  
+## [14.2.2](https://github.com/tripss/nx-extend/compare/strapi@14.2.1...strapi@14.2.2) (2026-08-03)
+
+### Dependency Updates
+
+* `core` updated to version `10.2.0`
+
 ## [14.2.1](https://github.com/tripss/nx-extend/compare/strapi@14.2.0...strapi@14.2.1) (2026-03-27)
 
 
