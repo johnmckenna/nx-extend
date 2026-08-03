@@ -1,4 +1,10 @@
  
+## [11.1.2](https://github.com/tripss/nx-extend/compare/gcp-storage@11.1.1...gcp-storage@11.1.2) (2026-08-03)
+
+### Dependency Updates
+
+* `core` updated to version `10.2.0`
+
 ## [11.1.1](https://github.com/tripss/nx-extend/compare/gcp-storage@11.1.0...gcp-storage@11.1.1) (2026-03-27)
 
 
