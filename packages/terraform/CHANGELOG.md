@@ -1,4 +1,16 @@
  
+## [10.4.0](https://github.com/tripss/nx-extend/compare/terraform@10.3.0...terraform@10.4.0) (2026-08-03)
+
+### Dependency Updates
+
+* `core` updated to version `10.2.0`
+
+### Features
+
+* **terraform,core:** support nx 23 ([b2cdf64](https://github.com/tripss/nx-extend/commit/b2cdf64cc0bb06c6c60e71c2c7b5bf92ed3b0415))
+* **terraform:** add --lock=false flag for read-only state access ([a869518](https://github.com/tripss/nx-extend/commit/a869518901227d37b894a74aee21d5e9d647a00c))
+* **terraform:** add provider management support with caching and mirroring ([5d4d5cd](https://github.com/tripss/nx-extend/commit/5d4d5cdceaaf1b6c524f8f700c37866babb35d45))
+
 ## [10.3.0](https://github.com/tripss/nx-extend/compare/terraform@10.2.1...terraform@10.3.0) (2026-07-08)
 
 
