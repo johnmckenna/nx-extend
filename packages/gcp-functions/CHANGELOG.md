@@ -1,4 +1,10 @@
  
+## [18.1.3](https://github.com/tripss/nx-extend/compare/gcp-functions@18.1.2...gcp-functions@18.1.3) (2026-08-03)
+
+### Dependency Updates
+
+* `core` updated to version `10.2.0`
+
 ## [18.1.2](https://github.com/tripss/nx-extend/compare/gcp-functions@18.1.1...gcp-functions@18.1.2) (2026-03-28)
 
 
