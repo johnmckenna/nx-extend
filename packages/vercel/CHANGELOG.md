@@ -1,4 +1,10 @@
  
+## [16.2.3](https://github.com/tripss/nx-extend/compare/vercel@16.2.2...vercel@16.2.3) (2026-08-03)
+
+### Dependency Updates
+
+* `core` updated to version `10.2.0`
+
 ## [16.2.2](https://github.com/tripss/nx-extend/compare/vercel@16.2.1...vercel@16.2.2) (2026-04-23)
 
 
