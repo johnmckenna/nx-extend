@@ -1,4 +1,11 @@
  
+## [10.4.1](https://github.com/tripss/nx-extend/compare/terraform@10.4.0...terraform@10.4.1) (2026-08-05)
+
+
+### Bug Fixes
+
+* **terraform:** remove quotes from backend-config arguments in init ([29ad687](https://github.com/tripss/nx-extend/commit/29ad68730c4557678fd0881834cfefd4915277f5))
+
 ## [10.4.0](https://github.com/tripss/nx-extend/compare/terraform@10.3.0...terraform@10.4.0) (2026-08-03)
 
 ### Dependency Updates
