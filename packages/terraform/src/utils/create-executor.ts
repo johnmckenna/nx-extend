@@ -155,7 +155,7 @@ export function createExecutor(command: string) {
         command,
         ...workspaceArgs,
         ...(command === 'init' ? jsonBackendConfig.map(
-          (config) => `-backend-config="${config.key}=${config.name}"`
+          (config) => `-backend-config=${config.key}=${config.name}`
         ) : []),
         command === 'plan' && planFile && `-out ${planFile}`,
         command === 'plan' && varFile && `--var-file ${varFile}`,
